@@ -30,7 +30,7 @@ func NewPublisher(asynqClient *asynq.Client, config PublisherConfig) *Publisher 
 // content is expected to be a struct or map that can be marshalled to JSON.
 func (p *Publisher) Publish(ctx context.Context, queue string, content any) error {
 	// Put the content to the message struct so we can have headers object.
-	msg := Message{
+	msg := PublishedMessage{
 		Content: content,
 		Headers: p.constructHeaders(ctx),
 	}
