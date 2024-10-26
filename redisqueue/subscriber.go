@@ -64,7 +64,7 @@ func NewSubscriber(
 		ctx, span := trace.StartSpan(ctx, appName+"-"+queue+"-worker", task.Type())
 		defer span.End()
 
-		if err := handler(ctx, task.Payload()); err != nil {
+		if err := handler(ctx, msg.Content); err != nil {
 			log.Error(ctx, err, logFields, "Subscriber: Error when processing message")
 			return err
 		}

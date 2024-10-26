@@ -1,5 +1,8 @@
 package queue
 
-import "context"
+import (
+	"context"
+	"encoding/json"
+)
 
-type SubscriberFn func(ctx context.Context, data []byte) error
+type SubscriberFn func(ctx context.Context, data json.RawMessage) error
